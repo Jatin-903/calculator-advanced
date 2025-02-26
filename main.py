@@ -1,28 +1,46 @@
 # main.py
-import sys
+import importlib
+from commands.calculator import AddCommand, SubtractCommand, MultiplyCommand, DivideCommand
 
-def calculate(a, b, operation):
-    try:
-        a, b = float(a), float(b)
-    except ValueError:
-        return f"Invalid number input: {a} or {b} is not a valid number."
-
-    if operation == "add":
-        return f"The result of {a} add {b} is equal to {a + b}"
-    elif operation == "subtract":
-        return f"The result of {a} subtract {b} is equal to {a - b}"
-    elif operation == "multiply":
-        return f"The result of {a} multiply {b} is equal to {a * b}"
-    elif operation == "divide":
-        if b == 0:
-            return "An error occurred: Cannot divide by zero"
-        return f"The result of {a} divide {b} is equal to {a / b}"
-    else:
-        return f"Unknown operation: {operation}"
+class CalculatorApp:
+    def __init__(self):
+        self.commands = {
+            "add": AddCommand(),
+            "subtract": SubtractCommand(),
+            "multiply": MultiplyCommand(),
+            "divide": DivideCommand(),
+        }
+        self.load_plugins()
+    
+    def load_plugins(self):
+        try:
+            menu_plugin = importlib.import_module('plugins.menu')  # Dynamically load the menu plugin
+            self.show_menu = menu_plugin.show_menu  # Use the show_menu function from the plugin
+        except ModuleNotFoundError:
+            print("Menu plugin not found.")
+    
+    def start(self):
+        print("Welcome to the interactive calculator!")
+        while True:
+            command = input("Enter command (add, subtract, multiply, divide) or 'menu' to see available commands: ")
+            if command == "menu":
+                self.show_menu()
+            elif command in self.commands:
+                self.execute_command(command)
+            elif command == "exit":
+                break
+            else:
+                print("Invalid command, please try again.")
+    
+    def execute_command(self, command):
+        try:
+            a = float(input("Enter first number: "))
+            b = float(input("Enter second number: "))
+            result = self.commands[command].execute(a, b)
+            print(f"Result: {result}")
+        except ValueError as e:
+            print(f"Error: {e}")
 
 if __name__ == "__main__":
-    if len(sys.argv) != 4:
-        print("Usage: python main.py <a> <b> <operation>")
-    else:
-        a, b, operation = sys.argv[1], sys.argv[2], sys.argv[3]
-        print(calculate(a, b, operation))
+    app = CalculatorApp()
+    app.start()
