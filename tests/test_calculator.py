@@ -1,5 +1,6 @@
 # tests/test_calculator.py
-from commands.calculator import AddCommand, SubtractCommand, MultiplyCommand, DivideCommand
+from calculator_project.commands.calculator import AddCommand, SubtractCommand, MultiplyCommand, DivideCommand
+
 
 def test_add():
     add = AddCommand()

@@ -27,7 +27,9 @@ jobs:
           pip install -r requirements.txt
 
       - name: Run tests
-        run: pytest --cov=.
+        run: |
+          export PYTHONPATH=$PYTHONPATH:$(pwd)
+          pytest --cov=.
 
       - name: Upload coverage reports
         uses: codecov/codecov-action@v3
