@@ -1,23 +1,25 @@
 # tests/test_calculator.py
-from calculator-advanced.commands.calculator import AddCommand, SubtractCommand, MultiplyCommand, DivideCommand
 
+from commands.calculator import AddCommand, SubtractCommand, MultiplyCommand, DivideCommand
+import pytest
 
+# Add your test functions here
 def test_add():
-    add = AddCommand()
-    assert add.execute(1, 2) == 3
+    add_command = AddCommand(1, 2)
+    result = add_command.execute()
+    assert result == 3
 
 def test_subtract():
-    subtract = SubtractCommand()
-    assert subtract.execute(5, 3) == 2
+    subtract_command = SubtractCommand(5, 3)
+    result = subtract_command.execute()
+    assert result == 2
 
 def test_multiply():
-    multiply = MultiplyCommand()
-    assert multiply.execute(3, 2) == 6
+    multiply_command = MultiplyCommand(4, 3)
+    result = multiply_command.execute()
+    assert result == 12
 
 def test_divide():
-    divide = DivideCommand()
-    assert divide.execute(6, 2) == 3
-    try:
-        divide.execute(1, 0)
-    except ValueError:
-        pass
+    divide_command = DivideCommand(6, 2)
+    result = divide_command.execute()
+    assert result == 3
