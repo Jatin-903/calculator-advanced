@@ -1,7 +1,3 @@
-# plugins/menu.py
+# Menu plugin to show available commands
 def show_menu():
-    print("Menu Plugin: Available commands:")
-    print(" - add")
-    print(" - subtract")
-    print(" - multiply")
-    print(" - divide")
+    return "Menu Plugin: Available commands: add, subtract, multiply, divide"
