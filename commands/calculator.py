@@ -1,18 +1,33 @@
-# Command classes for calculator operations
 class AddCommand:
-    def execute(self, a, b):
-        return a + b
+    def __init__(self, a, b):
+        self.a = a
+        self.b = b
+
+    def execute(self):
+        return self.a + self.b
 
 class SubtractCommand:
-    def execute(self, a, b):
-        return a - b
+    def __init__(self, a, b):
+        self.a = a
+        self.b = b
+
+    def execute(self):
+        return self.a - self.b
 
 class MultiplyCommand:
-    def execute(self, a, b):
-        return a * b
+    def __init__(self, a, b):
+        self.a = a
+        self.b = b
+
+    def execute(self):
+        return self.a * self.b
 
 class DivideCommand:
-    def execute(self, a, b):
-        if b == 0:
+    def __init__(self, a, b):
+        self.a = a
+        self.b = b
+
+    def execute(self):
+        if self.b == 0:
             raise ValueError("Cannot divide by zero.")
-        return a / b
+        return self.a / self.b

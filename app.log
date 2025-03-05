@@ -1,0 +1,9 @@
+2025-03-04 19:59:04,375 - INFO - Running in None mode
+2025-03-04 19:59:04,375 - INFO - API Key: None
+2025-03-04 19:59:04,376 - INFO - Menu plugin loaded successfully.
+2025-03-04 19:59:04,376 - INFO - Starting the interactive calculator.
+2025-03-04 19:59:15,029 - INFO - User requested the menu.
+2025-03-04 19:59:20,264 - INFO - Executed command: add, Result: 5.0
+2025-03-04 19:59:28,116 - INFO - Executed command: multiply, Result: 2430.0
+2025-03-04 19:59:34,918 - WARNING - Invalid command: deactivate
+2025-03-04 19:59:40,931 - INFO - User exited the calculator.
